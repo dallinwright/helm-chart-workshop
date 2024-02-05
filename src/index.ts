@@ -3,6 +3,7 @@ import { Request, Response } from 'express';
 
 import * as express from "express";
 import {connectToDatabase} from "./database";
+import {Sequelize} from "sequelize-typescript";
 
 const app =  express();
 const port = process.env.PORT || 3000;
@@ -29,7 +30,7 @@ app.post('/submit', (req: Request, res: Response) => {
 });
 
 app.listen(port, async () => {
-    let database = await connectToDatabase();
+    let database: Sequelize = await connectToDatabase();
 
 
     console.log(`[server]: Server is running at http://localhost:${port}`);
