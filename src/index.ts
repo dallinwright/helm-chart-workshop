@@ -28,8 +28,8 @@ app.post('/submit', (req: Request, res: Response) => {
     res.send('Received your text: ' + req.body.textbox);
 });
 
-app.listen(port, () => {
-    let database = connectToDatabase();
+app.listen(port, async () => {
+    let database = await connectToDatabase();
 
 
     console.log(`[server]: Server is running at http://localhost:${port}`);

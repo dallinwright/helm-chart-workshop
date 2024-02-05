@@ -1,15 +1,14 @@
 import { Sequelize } from "sequelize-typescript";
-import {User} from "./model";
 
 const config = {
     host: "localhost",
-    username: "postgres",
+    username: "adminuser",
     password: "password123",
     database: "users",
     dialect: "postgres",
     pool: {
         max: 5,
-        min: 0,
+        min: 1,
         acquire: 30000,
         idle: 10000
     }
@@ -24,8 +23,7 @@ export async function connectToDatabase(): Promise<Sequelize> {
         password: config.password,
         database: config.database,
         dialect: dialect,
-        pool: config.pool,
-        models: [User]
+        pool: config.pool
     });
 
 
