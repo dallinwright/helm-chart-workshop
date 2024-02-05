@@ -7,6 +7,22 @@ postgresql:
 
 replicaCount: 1
 
+env:
+  - name: DB_HOST
+    value: postgresql
+  - name: DB_NAME
+    value: users_db
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: postgresql-secret
+        key: postgresql-user
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: postgresql-secret
+        key: postgresql-password
+
 image:
   repository: nginx
   pullPolicy: IfNotPresent
@@ -64,4 +80,3 @@ autoscaling:
   maxReplicas: 100
   targetCPUUtilizationPercentage: 80
   targetMemoryUtilizationPercentage: 80
-

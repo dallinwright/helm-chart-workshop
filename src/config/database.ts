@@ -2,10 +2,10 @@ import { Sequelize } from "sequelize-typescript";
 import User from "../models/users";
 
 const config = {
-    host: "localhost",
-    username: "users_admin",
-    password: "ZXbEqJoiH2j1YKvUCRyuT5wK1UGJCUVE",
-    database: "users_db",
+    host: process.env.DB_HOST,
+    username: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME,
     dialect: "postgres",
     pool: {
         max: 5,

@@ -4,6 +4,7 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
+    "start": "npx ts-node src/index.ts",
     "dev": "nodemon src/index.ts"
   },
   "dependencies": {
@@ -14,7 +15,8 @@
     "sequelize-typescript": "^2.1.6",
     "reflect-metadata": "^0.2.1",
     "uuid": "^9.0.1",
-    "ejs": "^3.1.6"
+    "ejs": "^3.1.6",
+    "ts-node": "^10.9.2"
   },
   "devDependencies": {
     "@types/dotenv": "^8.2.0",

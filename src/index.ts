@@ -5,7 +5,6 @@ import * as express from "express";
 import {connectToDatabase} from "./config/database";
 import {Sequelize} from "sequelize-typescript";
 import User from "./models/users";
-import path from 'path';
 
 const app: Express =  express();
 const port = process.env.PORT || 3000;
