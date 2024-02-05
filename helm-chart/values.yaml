@@ -1,0 +1,54 @@
+
+postgresql:
+  enabled: true
+  auth:
+    existingSecret: postgresql-secret
+
+env:
+  - name: DB_HOST
+    value: postgresql
+  - name: DB_NAME
+    value: users_db
+  - name: DB_USER
+    valueFrom:
+      secretKeyRef:
+        name: postgresql-secret
+        key: postgresql-user
+  - name: DB_PASSWORD
+    valueFrom:
+      secretKeyRef:
+        name: postgresql-secret
+        key: postgresql-password
+
+image:
+  repository: demo-app
+  pullPolicy: Always
+  tag: "latest"
+
+serviceAccount:
+  create: true
+  automount: true
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+   limits:
+     cpu: 100m
+     memory: 128Mi
+   requests:
+     cpu: 100m
+     memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+autoscaling:
+  enabled: false
