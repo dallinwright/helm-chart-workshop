@@ -5,12 +5,12 @@ services:
     image: postgres:14-alpine
     ports:
       - "5432:5432"
-    volumes:
-      - ~/apps/postgres:/var/lib/postgresql/data
+#    volumes:
+#      - ~/apps/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=password123
-      - POSTGRES_USER=admin_user
-      - POSTGRES_DB=users_db
+      - "POSTGRES_PASSWORD=ZXbEqJoiH2j1YKvUCRyuT5wK1UGJCUVE"
+      - "POSTGRES_USER=users_admin"
+      - "POSTGRES_DB=users_db"
     networks:
       - backend
   redis:
