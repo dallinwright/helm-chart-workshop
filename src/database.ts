@@ -2,9 +2,9 @@ import { Sequelize } from "sequelize-typescript";
 
 const config = {
     host: "localhost",
-    username: "adminuser",
+    username: "admin_user",
     password: "password123",
-    database: "users",
+    database: "users_db",
     dialect: "postgres",
     pool: {
         max: 5,

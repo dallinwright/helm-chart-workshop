@@ -9,16 +9,14 @@ services:
       - ~/apps/postgres:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=password123
-      - POSTGRES_USER=adminuser
-      - POSTGRES_DB=users
+      - POSTGRES_USER=admin_user
+      - POSTGRES_DB=users_db
     networks:
       - backend
   redis:
     image: redis:alpine
     ports:
-      - "5432:5432"
-    volumes:
-      - "./healthchecks:/healthchecks"
+      - "6379:6379"
     healthcheck:
       test: /healthchecks/redis.sh
       interval: "5s"
