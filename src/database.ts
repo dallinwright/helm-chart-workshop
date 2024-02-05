@@ -17,8 +17,7 @@ const config = {
 
 const dialect = "postgres";
 
-
-export async function connectToDatabase() {
+export async function connectToDatabase(): Promise<Sequelize> {
     let database: Sequelize = new Sequelize({
         host: config.host,
         username: config.username,
@@ -30,9 +29,9 @@ export async function connectToDatabase() {
     });
 
 
-    let connection = await this.sequelize.authenticate();
+    await database.authenticate();
 
     console.log("Database connection established");
 
-    return connection;
+    return database;
 }
