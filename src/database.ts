@@ -5,7 +5,7 @@ const config = {
     host: "localhost",
     username: "postgres",
     password: "password123",
-    database: "testdb",
+    database: "users",
     dialect: "postgres",
     pool: {
         max: 5,
