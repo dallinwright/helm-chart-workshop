@@ -17,29 +17,22 @@ const config = {
 
 const dialect = "postgres";
 
-class Database {
-    public sequelize: Sequelize | undefined;
+
+export async function connectToDatabase() {
+    let database: Sequelize = new Sequelize({
+        host: config.host,
+        username: config.username,
+        password: config.password,
+        database: config.database,
+        dialect: dialect,
+        pool: config.pool,
+        models: [User]
+    });
 
 
-    private async connectToDatabase() {
-        this.sequelize = new Sequelize({
-            host: config.host,
-            username: config.username,
-            password: config.password,
-            database: config.database,
-            dialect: dialect,
-            pool: config.pool,
-            models: [User]
-        });
+    let connection = await this.sequelize.authenticate();
 
+    console.log("Database connection established");
 
-        await this.sequelize
-            .authenticate()
-            .then(() => {
-                console.log("Connection has been established successfully.");
-            })
-            .catch((err) => {
-                console.error("Unable to connect to the Database:", err);
-            });
-    }
+    return connection;
 }

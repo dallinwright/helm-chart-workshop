@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 
 
 import * as express from "express";
+import {connectToDatabase} from "./database";
 
 const app =  express();
 const port = process.env.PORT || 3000;
@@ -28,5 +29,7 @@ app.post('/submit', (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
+    let database = connectToDatabase();
+    
     console.log(`[server]: Server is running at http://localhost:${port}`);
 });
