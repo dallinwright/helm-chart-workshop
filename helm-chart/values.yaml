@@ -1,28 +1,31 @@
-
+# helm upgrade --install demo-app helm-chart/
 postgresql:
   enabled: true
   auth:
-    existingSecret: postgresql-secret
+    existingSecret: postgres-secret
+
+redis:
+  enabled: false
 
 env:
   - name: DB_HOST
-    value: postgresql
+    value: demo-app-postgresql
   - name: DB_NAME
     value: users_db
   - name: DB_USER
     valueFrom:
       secretKeyRef:
-        name: postgresql-secret
-        key: postgresql-user
+        name: postgres-secret
+        key: postgres-username
   - name: DB_PASSWORD
     valueFrom:
       secretKeyRef:
-        name: postgresql-secret
-        key: postgresql-password
+        name: postgres-secret
+        key: postgres-password
 
 image:
   repository: demo-app
-  pullPolicy: Always
+  pullPolicy: Never
   tag: "latest"
 
 serviceAccount:
